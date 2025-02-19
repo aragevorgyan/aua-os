@@ -4,7 +4,7 @@
 
 // Thread function to print a message
 void* print_message(void* arg) {
-    char* message = (char*)arg;
+    // char* message = (char*)arg;
     printf("%s\n", message);
     return NULL;
 }
