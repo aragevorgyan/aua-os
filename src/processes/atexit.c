@@ -8,18 +8,19 @@ void out(void)
 
 int main()
 {
+    atexit(out);
 
-    int x;
-    float f;
 
-    f = (float)x;
-    
-    if (atexit(out))
-    {
-        fprintf(stderr, "atexit() failed!\n");
-    }
+
+
+
+
 
     printf("Hello!\n");
+
+
+
+    
 
     return 0;   
 }

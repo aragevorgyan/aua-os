@@ -18,7 +18,7 @@ int main() {
     if (pid == 0) {
         // Child process
         printf("Child process: PID = %d\n", getpid());
-        sleep(2); // Simulate some work in the child process
+        sleep(5); // Simulate some work in the child process
         printf("Child process finished.\n");
 
         exit(0); // End child process

@@ -3,8 +3,8 @@
 // Define a struct
 struct DataHolder {
     char a;      // 1 byte
-    int b;       // 4 bytes
     char c;      // 1 byte
+    int b;       // 4 bytes
     double d;    // 8 bytes
 };
 

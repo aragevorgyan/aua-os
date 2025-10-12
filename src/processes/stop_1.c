@@ -10,6 +10,7 @@ int main() {
     printf("Running process PID: %d\n", getpid());
     while(1) {
         // Infinite loop to keep the process running
+        printf("In a loop\n");
     }
     return 0;
 }

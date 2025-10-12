@@ -2,7 +2,7 @@
 
 int main()
 {
-    printf("Hello\n");
+    printf("Hello %d\n", 5);
     while(1) {
         printf("Inside while\n");
     };

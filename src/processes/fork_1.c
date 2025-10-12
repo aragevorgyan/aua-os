@@ -7,8 +7,9 @@ int main()
 { 
     printf("Before fork\n");
 
-	// make two process which run same program after this instruction
-	fork(); 
+	// make two process which run the same program after this instruction
+	
+	fork();
 
 	printf("After fork!\n");
     while(1);

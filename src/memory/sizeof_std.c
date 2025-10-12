@@ -9,7 +9,7 @@ int main() {
     size_t sizeVar;
 
     // Print the size of each type using sizeof
-    printf("Size of int: %lu bytes\n", sizeof(intVar));
+    printf("Size of int: %lu bytes\n", sizeof(int));
     printf("Size of float: %lu bytes\n", sizeof(floatVar));
     printf("Size of double: %lu bytes\n", sizeof(doubleVar));
     printf("Size of char: %lu byte\n", sizeof(charVar));

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <malloc.h>
 #include <stdlib.h>  // For malloc() and free()
 
 int main() {
@@ -11,6 +12,8 @@ int main() {
 
     // Allocate memory for 'n' integers using malloc
     arr = (int *)malloc(n * sizeof(int));
+    int actual_size = malloc_usable_size(arr);
+    printf("actual_size = %d\n", actual_size);
 
     // Check if memory allocation was successful
     if (arr == NULL) {

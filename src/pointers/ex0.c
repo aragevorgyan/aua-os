@@ -1,10 +1,9 @@
 #include <stdio.h>
 
 // Function that modifies the value of the argument
-void modifyValue(int a) {
-    int b;
-    a = a + 10;
-    printf("Value inside the function: %d\n", a);
+void modifyValue(int *p) {
+    *p = *p + 10;
+    printf("Value inside the function: %d\n", *a);
 }
 
 int main() {
