@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 int x = 5;
-int turn;                 // Indicates whose turn it is
+int favored;                 // Indicates whose favored it is
 bool flag[2] = {false, false};  // Flags for each thread
 
 void* increment(void* arg) {
@@ -11,8 +11,8 @@ void* increment(void* arg) {
 
     // Entry section
     flag[id] = true;
-    turn = 1;
-    while (flag[1] && turn == 1) {
+    favored = 1;
+    while (flag[1] && favored == 1) {
         // Busy wait
     }
 
@@ -30,8 +30,8 @@ void* decrement(void* arg) {
 
     // Entry section
     flag[id] = true;
-    turn = 0;
-    while (flag[0] && turn == 0) {
+    favored = 0;
+    while (flag[0] && favored == 0) {
         // Busy wait
     }
 
@@ -47,7 +47,7 @@ void* decrement(void* arg) {
 int main() {
     pthread_t tid1, tid2;
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 20000; i++) {
         // Create threads
         pthread_create(&tid1, NULL, increment, NULL);
         pthread_create(&tid2, NULL, decrement, NULL);
@@ -57,7 +57,8 @@ int main() {
         pthread_join(tid2, NULL);
 
         // Print the final value of x
-        printf("Final value of x: %d\n", x);
+        if (x != 5)
+            printf("Final value of x: %d\n", x);
     }
 
     return 0;

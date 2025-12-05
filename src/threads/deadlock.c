@@ -29,7 +29,7 @@ void* thread2_func(void* arg) {
     pthread_mutex_lock(&lock2);
     printf("Thread 2: Locked mutex 2\n");
 
-    // Simulat./deae some work
+    // Simulate some work
     sleep(1);
 
     printf("Thread 2: Attempting to lock mutex 1\n");

@@ -10,7 +10,7 @@ pthread_spinlock_t spinlock;
 // Thread function to increment x
 void* increment(void* arg) {
     pthread_spin_lock(&spinlock);  // Acquire the lock
-    x++;
+    x++; //CS
     pthread_spin_unlock(&spinlock);  // Release the lock
     return NULL;
 }

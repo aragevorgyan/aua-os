@@ -17,9 +17,9 @@ void* routine(void* args) {
     sleep(rand() % 5 + 1);
     printf("(Player %d) Logged out\n", *(int*)args);
     sem_post(&semaphore);
-    //int sem_val;
-    //sem_getvalue(&semaphore, &sem_val);
-    //printf("sem_val: %d \n", sem_val);
+    int sem_val;
+    sem_getvalue(&semaphore, &sem_val);
+    printf("sem_val: %d \n", sem_val);
     free(args);
 }
 

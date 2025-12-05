@@ -1,22 +1,31 @@
+#define _GNU_SOURCE
 #include <pthread.h>
 #include <stdio.h>
 
 int x = 5;
 
+void tiny_delay(void) {
+    for (volatile int k = 0; k < 100000; ++k) { /* spin */ }
+}
+
 void* increment(void* arg) {
-        x++;
+    tiny_delay();
+    x++;
+    //printf("Inc\n");
     return NULL;
 }
 
 void* decrement(void* arg) {
-        x--;
+    tiny_delay();
+    x--;
+    //printf("Dec\n");
     return NULL;
 }
 
 int main() {
     pthread_t tid1, tid2;
 
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 20000; i++)
     {
         x = 5;
         // Create threads
@@ -28,9 +37,9 @@ int main() {
         pthread_join(tid2, NULL);
 
         // Print the final value of x
-        printf("Final value of x: %d\n", x);
+        if(x != 5)
+            printf("Final value of x: %d\n", x);
     }
-
 
     return 0;
 }

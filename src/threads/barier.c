@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define THREAD_NUM 9
-#define BARIER_NUM 3
+#define BARIER_NUM 4
 pthread_barrier_t barrier;
 
 void* routine(void* args) {

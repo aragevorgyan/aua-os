@@ -1,45 +1,33 @@
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <unistd.h>
+#include <fcntl.h>    // For open()
+#include <unistd.h>   // For read(), close()
+#include <stdlib.h>   // For exit()
 
-extern int errno;
-
-int main()
-{
+int main() {
     int fd;
-    errno = 0;
-    unsigned long word;
-    ssize_t nr;
-    unsigned char c[10];
+    char buffer[100];
+    ssize_t bytesRead;
 
-    fd = open("read_file.txt", O_RDONLY); // | O_CREAT, S_IWUSR | S_IRUSR | S_IWGRP | S_IRGRP | S_IROTH);
-    if (fd == -1)
-    {
-        perror("");
+    // Open an existing file for reading
+    fd = open("demo.txt", O_RDONLY);
+    if (fd == -1) {
+        perror("open failed");
+        exit(EXIT_FAILURE);
     }
 
-    //nr = read(fd, c, 8);
-    ssize_t ret;
-    int len = 8;
-    char *buf;
-    buf = c;
-    while (len != 0 && (ret = read(fd, buf, len)) != 0)
-    {
-        if (ret == -1)
-        {
-            if (errno == EINTR)
-                continue;
-            perror("read");
-            break;
-        }
-        len -= ret;
-        buf += ret;
+    // Read up to 100 bytes
+    bytesRead = read(fd, buffer, sizeof(buffer) - 1);
+    if (bytesRead == -1) {
+        perror("read failed");
+        close(fd);
+        exit(EXIT_FAILURE);
     }
-    perror("read");
-    printf("word = %s\n", c);
-    printf("End of reading, nr = %ld\n", nr);
+
+    // Null-terminate and print what was read
+    buffer[bytesRead] = '\0';
+    printf("Read %zd bytes: \"%s\"\n", bytesRead, buffer);
+
+    // Always close the file
+    close(fd);
     return 0;
 }

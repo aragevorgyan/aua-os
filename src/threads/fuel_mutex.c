@@ -22,6 +22,9 @@ void* car(void* arg) {
     while (fuel < 40) {
         printf("No enough fuel. Waiting...\n");
     }
+    while (fuel < 40) {
+        printf("No enough fuel. Waiting...\n");
+    }
     fuel -= 40;
     printf("Got fuel. Now left: %d\n", fuel);
     pthread_mutex_unlock(&mutexFuel);
