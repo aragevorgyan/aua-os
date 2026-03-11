@@ -1,1 +1,2 @@
-gcc -mavx2 -O0 -o simd_example simd_example.c
+gcc -mavx2 -O0 -o simd_add_float simd_add_float.c
+gcc -O3 -march=native -fopt-info-vec-optimized saxpy.c
