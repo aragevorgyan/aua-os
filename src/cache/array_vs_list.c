@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 10000000  // 10 million elements
+#define N 100000000  // 100 million elements
 
 // Node structure for linked list
 typedef struct Node {
