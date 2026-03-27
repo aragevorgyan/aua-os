@@ -23,7 +23,7 @@ int main() {
         
         id = omp_get_thread_num();
         nthrds = omp_get_num_threads();
-        
+         // Ensure all threads have the same nthrds value
         if (id == 0)
             nthreads = nthrds;
         
