@@ -1,11 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <omp.h>
 
-#define N 1000000  // Increase array size for better time measurement
-#define MAX_THREADS 8  // Adjust based on CPU
+#define N 100000000  // Increase array size for better time measurement
+#define MAX_THREADS 16  // Adjust based on CPU
 
 int main() {
-    int arr[N];
+    int *arr = malloc(N * sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
     long long sub_sums[MAX_THREADS] = {0};  // Array for partial sums
 
     // Initialize array with values 1, 2, 3, ..., N
@@ -20,9 +26,10 @@ int main() {
     start_time = omp_get_wtime();
 
     // Compute sum using OpenMP parallelization
-    #pragma omp parallel 
+    #pragma omp parallel num_threads(16)
     {
         int thread_id = omp_get_thread_num();
+        
         int total_threads = omp_get_num_threads();
         num_threads = total_threads;  // Capture total threads dynamically
 

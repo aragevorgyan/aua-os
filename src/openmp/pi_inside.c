@@ -1,7 +1,7 @@
 #include <omp.h>
 #include <stdio.h>
 
-static long num_steps = 100000000;
+static long num_steps = 1000000000;
 #define NUM_THREADS 2
 
 int main() {
@@ -15,7 +15,7 @@ int main() {
     #pragma omp parallel
     {
         int i, id, nthreads;
-        double x, sum;
+        double x;
         
         id = omp_get_thread_num();
         nthreads = omp_get_num_threads();
@@ -23,7 +23,7 @@ int main() {
         if (id == 0)
             nthreads = omp_get_num_threads();
 
-        for (i = id, sum = 0.0; i < num_steps; i += nthreads) {
+        for (i = id; i < num_steps; i += nthreads) {
             x = (i + 0.5) * step;
             #pragma omp critical
             pi += 4.0 / (1.0 + x * x);
