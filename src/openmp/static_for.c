@@ -7,7 +7,8 @@ int main() {
     int arr[N];
 
     // Parallel for loop
-    #pragma omp parallel for schedule(static, 1)
+    #pragma omp parallel num_threads(8)
+    #pragma omp for schedule(static, 8)
     for (int i = 0; i < N; i++) {
         arr[i] = i * i;
 

@@ -6,8 +6,8 @@
 
 int main() {
 
-    //#pragma omp parallel for schedule(static, 1)
-    #pragma omp parallel for schedule(dynamic, 1)
+    #pragma omp parallel for schedule(static, 1)
+    //#pragma omp parallel for schedule(dynamic, 1)
     for (int i = 0; i < N; i++) {
 
         // Simulate uneven workload
