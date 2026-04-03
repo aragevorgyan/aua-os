@@ -11,7 +11,7 @@ int main() {
         int id = omp_get_thread_num();
 
         // First loop
-        #pragma omp for //nowait
+        #pragma omp for nowait
         for (int i = 0; i < N; i++) {
             A[i] = i * 2;
             printf("Thread %d finished A[%d]\n", id, i);
