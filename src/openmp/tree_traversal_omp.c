@@ -25,7 +25,7 @@ void process(Node* n) {
 
 void traverse_task(Node* root) {
     if (root == NULL) return;
-
+    //#pragma omp task
     process(root);
 
     #pragma omp task

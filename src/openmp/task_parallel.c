@@ -6,6 +6,7 @@ int main() {
 
     #pragma omp parallel num_threads(4)
     {
+        #pragma omp single
         for (int i = 1; i <= 4; i++) {
             int val = i;
 

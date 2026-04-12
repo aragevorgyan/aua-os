@@ -5,7 +5,7 @@ int main() {
     int i;
     int last_val = -1;
 
-    #pragma omp parallel for //lastprivate(last_val)
+    #pragma omp parallel for lastprivate(last_val)
     for (i = 0; i < 16; i++) {
         last_val = i;
         printf("Thread %d processes i=%d\n",
